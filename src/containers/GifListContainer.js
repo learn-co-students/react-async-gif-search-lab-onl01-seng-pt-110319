@@ -19,18 +19,10 @@ class GifListContainer extends React.Component {
         const baseURL = "https://api.giphy.com/v1/gifs/search?q=dolphin&api_key=6ZLJ81Gc14qQEtEGUxiPyVi5D7ZX2R8L&rating=g";
         fetch(baseURL)
         .then(res => res.json())
-        .then(({data}) => {
-            this.setState({ gifs: data.map( gif => ({ url: gif.images.original.url }))})
-        })
+        .then(data => this.setState({
+            gifs: data.data.map(gif => gif.images.original.url)
+        }))
     }
-    // fetchGIFs() {
-    //     const baseURL = "https://api.giphy.com/v1/gifs/search?q=dolphin&api_key=6ZLJ81Gc14qQEtEGUxiPyVi5D7ZX2R8L&rating=g";
-    //     fetch(baseURL)
-    //     .then(res => res.json())
-    //     .then(data => this.setState({
-    //         gifs: data.data.map(gif => gif.images.original.url)
-    //     }))
-    // }
 
     componentDidMount() {
         this.fetchGIFs();
