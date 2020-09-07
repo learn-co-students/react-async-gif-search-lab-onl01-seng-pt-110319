@@ -13,4 +13,9 @@ const App = () => {
   )
 }
 
+
+// fetch('https://api.giphy.com/v1/gifs/search?q=dolphin&api_key=mmFBjJEU7SuRK5LPD57Kh4BrshLjOuCH&rating=g')
+// .then(resp => resp.json())
+// .then(data => (console.log(data)))
+
 export default App
