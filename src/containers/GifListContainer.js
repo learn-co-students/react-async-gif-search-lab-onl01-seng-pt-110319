@@ -12,25 +12,28 @@ class GifListContainer extends Component {
         this.fetchGifs()
     }
 
-    // componentDidUpdate() {
+    componentDidUpdate() {
 
-    //     console.log("Good job your search worked!")
-    // }
-
-    fetchGifs = (term = "dolphins") => {
-        fetch(`https://api.giphy.com/v1/gifs/search?q=${term}&api_key=dc6zaTOxFJmzC&rating=g&limit=10`)
-            .then(resp => resp.json())
-            .then(data => this.setState({ gifs: data.data }))
+        console.log("Good job your search worked!")
     }
 
-    submitHandler = (searchTerm) => {
+    fetchGifs = (term = "dolphins") => {
+        fetch(`https://api.giphy.com/v1/gifs/search?q=${term}&api_key=mmFBjJEU7SuRK5LPD57Kh4BrshLjOuCH&rating=g&limit=3`)
+            .then(resp => resp.json())
+            .then(data => {
+                console.log ({ data })
+                this.setState({ gifs: data.data })
+            })
+    }
+
+    handleSubmit = (searchTerm) => {
         this.fetchGifs(searchTerm)
     }
 
     render() {
         return (
             <React.Fragment>
-                <GifSearch submitHandler={this.submitHandler} />
+                <GifSearch handleSubmit={this.handleSubmit} />
                 <GifList gifs={this.state.gifs} />
             </React.Fragment>
         )
